@@ -13,11 +13,7 @@ public class PrototypeDBHandler extends SQLiteOpenHelper {
      */
     private static final int DB_VERSION = 1;
     private static final String DB_NAME = "HiNoFiDB.db";
-    private static final String Table_Name = "tblUser";
-    private static final String USER_ID = "UserID";
-    private static final String USER_USERNAME = "Username";
-    private static final String USER_PASSWORD = "Password";
-    private static final String USER_EMAIL = "Email Address";
+
 
     /***
      * Initialise the database
@@ -27,22 +23,21 @@ public class PrototypeDBHandler extends SQLiteOpenHelper {
        super(context,DB_NAME, null, DB_VERSION);
    }
 
+   //Create tables
     @Override
-    public void onCreate(SQLiteDatabase db){
-        String Create_Table = "CREATE TABLE " + Table_Name+ "(" +USER_ID +
-                "INTEGER PRIMARYKEY,"
-                + USER_USERNAME + "TEXT," +
-                USER_PASSWORD + "TEXT,"+ ") ";
-        db.execSQL(Create_Table);
+    public void onCreate(SQLiteDatabase db) {
+            //Create User Table
+            db.execSQL(User.CREATE_TABLE);
+   }
+    //Upgrading database
 
-    }
+
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
-    {
-        //Drop Table if exists
-        db.execSQL("DROP TABLE IF EXISTS " + Table_Name);
-        //Create table again
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        //Drop older table is exists
+        db.execSQL("DROP TABLE IF EXISTS " + User.TABLE_NAME);
+
+        //Create tables
         onCreate(db);
     }
-
 }

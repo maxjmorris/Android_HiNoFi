@@ -3,22 +3,44 @@ package com.example.android_hinofi_prototype;
 import java.util.Date;
 
 public class User {
-    //fields
 
+    public static final String TABLE_NAME = "user";
+
+    public static final String COLUMN_ID = "UserID";
+    public static final String COLUMN_USERNAME = "Username";
+    public static final String COLUMN_PASSWORD ="Password";
+    public static final String COLUMN_EMAILADDRESS = "Email Address";
+
+
+    //fields
     private int _userID;
     private String _emailAddress;
     private String _username;
     private String _password;
-    private Date DOB;
 
+    /***
+     * Create Query for the table
+     */
+    public static final String CREATE_TABLE =
+            "CREATE TABLE " + TABLE_NAME + "("
+            + COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + COLUMN_USERNAME + " TEXT,"
+            + COLUMN_PASSWORD + " TEXT,"
+            + COLUMN_EMAILADDRESS + " TEXT"
+            + ")";
 
+    public User(){}
 
-    public User(String emailAddress, String username, String password)
+    public User(int id, String emailAddress, String username, String password)
     {
+        this._userID = id;
         this._username = username;
         this._emailAddress = emailAddress;
         this._password = password;
     }
+
+
+
     /***
      *Get set for User ID
      */
