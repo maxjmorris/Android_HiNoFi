@@ -1,90 +1,61 @@
 package com.example.android_hinofi_prototype;
 
-import java.util.Date;
-
 public class User {
 
-    public static final String TABLE_NAME = "user";
-
-    public static final String COLUMN_ID = "UserID";
-    public static final String COLUMN_USERNAME = "Username";
-    public static final String COLUMN_PASSWORD ="Password";
-    public static final String COLUMN_EMAILADDRESS = "Email Address";
-
-
     //fields
-    private int _userID;
-    private String _emailAddress;
-    private String _username;
-    private String _password;
+    private int userID;
+    private String emailAddress;
+    private String username;
+    private String password;
 
-    /***
-     * Create Query for the table
-     */
-    public static final String CREATE_TABLE =
-            "CREATE TABLE " + TABLE_NAME + "("
-            + COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + COLUMN_USERNAME + " TEXT,"
-            + COLUMN_PASSWORD + " TEXT,"
-            + COLUMN_EMAILADDRESS + " TEXT"
-            + ")";
 
-    public User(){}
-
-    public User(int id, String emailAddress, String username, String password)
-    {
-        this._userID = id;
-        this._username = username;
-        this._emailAddress = emailAddress;
-        this._password = password;
-    }
 
 
 
     /***
      *Get set for User ID
      */
-    public int get_userID(  )
+    public int getUserID(  )
     {
-        return this._userID;
+        return this.userID;
     }
-    public void set_userID(int id)
+    public void setUserID(int id)
     {
-        this._userID = id;
+        this.userID = id;
     }
     /***
      *Get set for Username
      */
-    public String get_username()
+    public String getUsername()
     {
-        return this._username;
+        return this.username;
     }
-    public void set_username(String username)
+    public void setUsername(String username)
     {
-        this._username = username;
+        this.username = username;
     }
 
     /***
      *Get set for password
      */
-    public String get_password()
+    public String getPassword()
     {
-        return this._password;
+        return this.password;
     }
-    public void set_password(String password)
+    public void setPassword(String password)
     {
-        this._password = password;
+        this.password = password;
     }
     /***
      *Get set for Email address
      */
-    public  String get_emailAddress()
+    public  String getEmailAddress()
     {
-        return this._emailAddress;
+        return this.emailAddress;
     }
-    public void set_emailAddress(String emailAddress)
+    public void setEmailAddress(String emailAddress)
     {
-        this._password = _password;
+        this.emailAddress = emailAddress;
     }
 
 }
