@@ -43,10 +43,10 @@
         />
 
 
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="400dp"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:background="@color/Box">
@@ -63,16 +63,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="83dp"
                 android:layout_gravity="center"
-                android:text="Login"
+                android:text="@string/TextViewLogin"
                 android:textColor="@android:color/black"
                 android:textSize="45sp" />
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInput_Layout_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <AutoCompleteTextView
-                    android:id="@+id/email"
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/textInput_edit_email"
                     android:layout_width="250sp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -87,18 +88,18 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInput_Layout_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <EditText
-                    android:id="@+id/password"
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/textInput_edit_password"
                     android:layout_width="250sp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@android:color/white"
                     android:hint="@string/prompt_password"
                     android:imeActionId="6"
-                    android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
@@ -107,8 +108,8 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <Button
-                android:id="@+id/email_sign_in_button"
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnLogin"
                 style="?android:textAppearanceSmall"
                 android:layout_width="248dp"
                 android:layout_height="match_parent"
@@ -116,12 +117,24 @@
                 android:layout_marginTop="50sp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_buttons"
-                android:text="@string/action_sign_in"
+                android:text="@string/action_login"
                 android:textColor="@android:color/black"
                 android:textStyle="bold" />
 
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnSignUp"
+                style="?android:textAppearanceSmall"
+                android:layout_width="248dp"
+                android:layout_height="43dp"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_buttons"
+                android:gravity="center"
+                android:text="@string/action_sign_up"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"/>
         </LinearLayout>
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
 
 </LinearLayout>
