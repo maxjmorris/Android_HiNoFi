@@ -191,7 +191,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursorCount > 0;
     }
 
-    public boolean checkUser(String email, String password){
+    public boolean validateUser(String email, String password){
 
         //array of columns to fetch
         String[] columns = {

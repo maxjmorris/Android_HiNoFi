@@ -162,7 +162,7 @@
                     android:layout_marginTop="30dp"
                     android:gravity="center"
                     android:text="Already a member? Login"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textColor="@android:color/black"/>
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>

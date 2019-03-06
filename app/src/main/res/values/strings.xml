@@ -108,5 +108,6 @@
     <string name="text_MyAccounts">My Accounts</string>
     <string name="text_allAccounts">All Accounts</string>
     <string name="btnSend">Send</string>
+    <string name="error_valid_email_password">Wrong Email or Password</string>
 
 </resources>

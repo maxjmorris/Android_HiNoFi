@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return;
         }
 
-        if(!databaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim(),
+        if(!databaseHelper.validateUser(textInputEditTextEmail.getText().toString().trim(),
                 textInputEditTextPassword.getText().toString().trim())) {
 
             Intent accountsIntent = new Intent(activity, MyAccountActivity.class);
@@ -120,7 +120,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             startActivity(accountsIntent);
         }
         else {
-            Snackbar.make(nestedScrollView, getString(R.string.error_invalid_email), Snackbar.LENGTH_LONG).show();
+            Snackbar.make(nestedScrollView, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
         }
         }
     /**
