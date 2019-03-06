@@ -9,4 +9,5 @@
     <color name="Title">#FFD700</color>
     <color name="Subtitle">#FFFFFFFF</color>
     <color name="Box">#1FCCFF</color>
+    <color name="TextHint">#51d8c7</color>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.android_hinofi_prototype;
+package com.example.android_hinofi_prototype.activities;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -18,6 +18,8 @@ import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.view.MenuItem;
+
+import com.example.android_hinofi_prototype.R;
 
 import java.util.List;
 

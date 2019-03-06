@@ -13,8 +13,8 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="txtTitle">HiNoFi</string>
-    <string name="txtSubtitle">Bring Music Together</string>
+    <string name="text_Title">HiNoFi</string>
+    <string name="text_Subtitle">Bring Music Together</string>
     <string name="Login_Activity">Login</string>
     <string name="btnHelp">Help</string>
     <string name="title_activity_settings">Settings</string>
@@ -91,10 +91,22 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_home">HomeActivity</string>
+    <string name="error_message_username">Enter A valid username</string>
     <string name="error_message_email">Enter A valid email</string>
-    <string name="error_message_password">Enter A valid email</string>
+    <string name="error_message_password">Enter A valid Password</string>
     <string name="TextViewSignUp">Sign Up</string>
     <string name="TextViewLogin">Login</string>
     <string name="prompt_username">Username</string>
     <string name="prompt_confirm_password">Confirm Password</string>
+    <string name="btnRegister">Register</string>
+    <string name="error_password_match">Passwords don\'t match</string>
+    <string name="message_success">User Registered Successfully</string>
+    <string name="error_user_exists">User already exists</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="text_MyAccounts">My Accounts</string>
+    <string name="text_allAccounts">All Accounts</string>
+    <string name="btnSend">Send</string>
+
 </resources>

@@ -1,4 +1,4 @@
-package com.example.android_hinofi_prototype;
+package com.example.android_hinofi_prototype.sql;
 
 
 import android.content.ContentValues;
@@ -6,6 +6,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.example.android_hinofi_prototype.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,18 +25,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String USER_TABLE = "user";
 
     //User Table Columns
-    private static final String COLUMN_USERID = "UserID";
+    private static final String COLUMN_USER_ID = "UserID";
     private static final String COLUMN_USERNAME = "Username";
-    private static final String COLUMN_USERPASSWORD = "Password";
-    private static final String COLUMN_USEREMAIL = "Email_Address";
+    private static final String COLUMN_USER_PASSWORD = "Password";
+    private static final String COLUMN_USER_EMAIL = "Email_Address";
 
 
     //Creates this Table with a query
     private String CREATE_USER_TABLE = "CREATE TABLE " + USER_TABLE + "("
-            +COLUMN_USERID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + COLUMN_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             +COLUMN_USERNAME + "  TEXT,"
-            +COLUMN_USEREMAIL + "  TEXT,"
-            +COLUMN_USERPASSWORD + "  TEXT" + ")";
+            + COLUMN_USER_EMAIL + "  TEXT,"
+            + COLUMN_USER_PASSWORD + "  TEXT" + ")";
 
     //Drop table query
     private String DROP_USER_TABLE = "DROP TABLE IF EXISTS " + USER_TABLE;
@@ -66,8 +68,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(COLUMN_USERNAME, user.getUsername());
-        values.put(COLUMN_USEREMAIL, user.getEmailAddress());
-        values.put(COLUMN_USERPASSWORD, user.getPassword());
+        values.put(COLUMN_USER_EMAIL, user.getEmailAddress());
+        values.put(COLUMN_USER_PASSWORD, user.getPassword());
 
         //Inserting row
         db.insert(USER_TABLE, null, values);
@@ -81,10 +83,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     {
         // array of columns to fetch
         String[] columns = {
-                COLUMN_USERID,
+                COLUMN_USER_ID,
                 COLUMN_USERNAME,
-                COLUMN_USEREMAIL,
-                COLUMN_USERPASSWORD
+                COLUMN_USER_EMAIL,
+                COLUMN_USER_PASSWORD
         };
 
 
@@ -107,10 +109,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         {
             do {
                 User user = new User();
-                user.setUserID(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_USERID))));
+                user.setUserID(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_USER_ID))));
                 user.setUsername(cursor.getString(cursor.getColumnIndex(COLUMN_USERNAME)));
-                user.setEmailAddress(cursor.getString(cursor.getColumnIndex(COLUMN_USEREMAIL)));
-                user.setPassword(cursor.getString(cursor.getColumnIndex(COLUMN_USERPASSWORD)));
+                user.setEmailAddress(cursor.getString(cursor.getColumnIndex(COLUMN_USER_EMAIL)));
+                user.setPassword(cursor.getString(cursor.getColumnIndex(COLUMN_USER_PASSWORD)));
                 //adding user record to list
                 userList.add(user);
             }while (cursor.moveToNext());
@@ -134,11 +136,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(COLUMN_USERNAME,user.getUsername());
-        values.put(COLUMN_USEREMAIL,user.getEmailAddress());
-        values.put(COLUMN_USERPASSWORD,user.getPassword());
+        values.put(COLUMN_USER_EMAIL,user.getEmailAddress());
+        values.put(COLUMN_USER_PASSWORD,user.getPassword());
 
         //updating the row
-        db.update(USER_TABLE, values, COLUMN_USERID + " = ?",
+        db.update(USER_TABLE, values, COLUMN_USER_ID + " = ?",
                 new String[]{String.valueOf(user.getUserID())});
         db.close();
     }
@@ -150,7 +152,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void deleteUser(User user){
         SQLiteDatabase db = this.getWritableDatabase();
         //delete user by UserID
-        db.delete(USER_TABLE,COLUMN_USERID + " = ?",
+        db.delete(USER_TABLE, COLUMN_USER_ID + " = ?",
                 new String[]{String.valueOf(user.getUserID())});
         db.close();
     }
@@ -159,12 +161,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         //array of columns to fetch
         String[] columns = {
-                COLUMN_USERID
+                COLUMN_USER_ID
         };
         SQLiteDatabase db = this.getReadableDatabase();
 
         //selection criteria
-        String selection = COLUMN_USEREMAIL + " = ?";
+        String selection = COLUMN_USER_EMAIL + " = ?";
 
         //selection argument
         String[] selectionArgs = {email};
@@ -186,32 +188,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
 
-        if(cursorCount > 0)
-        {
-            return true;
-        }
-        return false;
-            }
+        return cursorCount > 0;
+    }
 
     public boolean checkUser(String email, String password){
 
         //array of columns to fetch
         String[] columns = {
-                COLUMN_USERID
+                COLUMN_USER_ID
         };
         SQLiteDatabase db = this.getReadableDatabase();
 
         //selection criteria
-        String selection = COLUMN_USEREMAIL + " = ?" + " AND " + COLUMN_USERPASSWORD +" = ?";
+        String selection = COLUMN_USER_EMAIL + " = ?" + " AND " + COLUMN_USER_PASSWORD + " = ?";
 
         //selection argument
         String[] selectionArgs = {email, password};
 
         //query user table with condition
-        /***
-         *
-         *
-         */
         Cursor cursor = db.query(USER_TABLE,
                 columns,
                 selection,
@@ -224,10 +218,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
 
-        if(cursorCount > 0)
-        {
-            return true;
-        }
-        return false;
+        return cursorCount > 0;
     }
 }

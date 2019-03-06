@@ -1,4 +1,4 @@
-package com.example.android_hinofi_prototype;
+package com.example.android_hinofi_prototype.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +8,11 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 
+import com.example.android_hinofi_prototype.R;
 import com.example.android_hinofi_prototype.helpers.InputValidation;
+import com.example.android_hinofi_prototype.sql.DatabaseHelper;
 
 
 /**
@@ -53,14 +54,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void initViews() {
         nestedScrollView = findViewById(R.id.login_form);
 
-        textInputLayoutEmail = findViewById(R.id.textInput_Layout_email);
-        textInputLayoutPassword = findViewById(R.id.textInput_Layout_password);
+        textInputLayoutEmail = findViewById(R.id.textInputLayoutEmail);
+        textInputLayoutPassword = findViewById(R.id.textInputLayoutPassword);
 
-        textInputEditTextEmail = findViewById(R.id.textInput_edit_email);
-        textInputEditTextPassword = findViewById(R.id.textInput_edit_password);
+        textInputEditTextEmail = findViewById(R.id.textInputEditEmail);
+        textInputEditTextPassword = findViewById(R.id.textInputEditPassword);
         LoginButton = findViewById(R.id.btnLogin);
 
-        SignUpButton = findViewById(R.id.btnSignUp);
+        SignUpButton = findViewById(R.id.btnRegister);
 
 
     }
@@ -90,7 +91,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.btnLogin:
                 verifyFromSQLite();
                 break;
-            case R.id.btnSignUp:
+            case R.id.btnRegister:
                 //Navigates to the register page
                 Intent intentRegister = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(intentRegister);
@@ -110,10 +111,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return;
         }
 
-        if(databaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim(),
+        if(!databaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim(),
                 textInputEditTextPassword.getText().toString().trim())) {
 
-            Intent accountsIntent = new Intent(activity, UsersListActivity.class);
+            Intent accountsIntent = new Intent(activity, MyAccountActivity.class);
             accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());
             emptyInputEditText();
             startActivity(accountsIntent);
@@ -122,7 +123,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Snackbar.make(nestedScrollView, getString(R.string.error_invalid_email), Snackbar.LENGTH_LONG).show();
         }
         }
-
+    /**
+     * This method is to empty all input edit text
+     */
         private void emptyInputEditText()
         {
             textInputEditTextEmail.setText(null);

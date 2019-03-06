@@ -1,4 +1,4 @@
-package com.example.android_hinofi_prototype;
+package com.example.android_hinofi_prototype.models;
 
 public class User {
 

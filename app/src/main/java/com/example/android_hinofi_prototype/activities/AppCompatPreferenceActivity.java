@@ -1,4 +1,4 @@
-package com.example.android_hinofi_prototype;
+package com.example.android_hinofi_prototype.activities;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
