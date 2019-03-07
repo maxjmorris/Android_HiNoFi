@@ -1,168 +1,86 @@
 package com.example.android_hinofi_prototype.activities;
 
-import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.widget.NestedScrollView;
+import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.AppCompatTextView;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.View;
-
+import android.widget.EditText;
 
 import com.example.android_hinofi_prototype.R;
-import com.example.android_hinofi_prototype.models.User;
-import com.example.android_hinofi_prototype.helpers.InputValidation;
+import com.example.android_hinofi_prototype.adapters.LoginDatabaseAdapter;
 
-import com.example.android_hinofi_prototype.sql.DatabaseHelper;
+public class RegisterActivity extends AppCompatActivity {
 
-
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
-    private final AppCompatActivity activity = RegisterActivity.this;
-
-    private NestedScrollView nestedScrollView;
-
-    private TextInputLayout textInputLayoutUsername;
-    private TextInputLayout textInputLayoutEmail;
-    private TextInputLayout textInputLayoutPassword;
-    private TextInputLayout textInputLayoutConfirmPassword;
-
-    private TextInputEditText textInputEditTextUsername;
-    private TextInputEditText textInputEditTextEmail;
-    private TextInputEditText textInputEditTextPassword;
-    private TextInputEditText textInputEditTextConfirmPassword;
-
-    private AppCompatTextView lnkLogin;
-
-    private AppCompatButton SignUpButton;
-
-    private InputValidation inputValidation;
-    private DatabaseHelper databaseHelper;
-    private User user;
+    Context context = this;
+    private EditText textEditUsername;
+    private EditText textEditEmail;
+    private EditText textEditPassword;
+    private String userName;
+    private String emailAddress;
+    private String password;
+    String receiveOk;
+    LoginDatabaseAdapter loginDatabaseAdapter;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        getSupportActionBar().hide();
 
-        initViews();
-        initListeners();
-        initObjects();
+        //get instance of the database adapter
+        loginDatabaseAdapter = new LoginDatabaseAdapter(getApplicationContext());
+        loginDatabaseAdapter = loginDatabaseAdapter.open();
+        textEditEmail = findViewById(R.id.textEditEmail);
+        textEditPassword = findViewById(R.id.textEditPassword);
+        textEditUsername = findViewById(R.id.textEditUsername);
     }
 
-    /***
-     * Method to initialise the views of the Registering Page
-     */
-    private void initViews() {
-        nestedScrollView = findViewById(R.id.login_form);
+    public void OK(View view) {
 
-        textInputLayoutUsername = findViewById(R.id.textInputLayoutUsername);
-        textInputLayoutEmail = findViewById(R.id.textInputLayoutEmail);
-        textInputLayoutPassword = findViewById(R.id.textInputLayoutPassword);
-        textInputLayoutConfirmPassword = findViewById(R.id.textInputLayoutConfirmPassword);
+        userName = textEditUsername.getText().toString();
+        emailAddress = textEditEmail.getText().toString();
+        password = textEditPassword.getText().toString();
 
-        textInputEditTextUsername = findViewById(R.id.textInputEditUsername);
-        textInputEditTextEmail = findViewById(R.id.textInputEditEmail);
-        textInputEditTextPassword = findViewById(R.id.textInputEditPassword);
-        textInputEditTextConfirmPassword = findViewById(R.id.textInputEditConfirmPassword);
+        if ((userName.equals("")) || (emailAddress.equals("")) || (password.equals(""))) {
+            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            alertDialog.setTitle("ALERT!");
+            alertDialog.setMessage("Fill All Fields");
+            alertDialog.setButton(Dialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+            alertDialog.show();
+        }
+        else {
+            //Save the data in the database
+            receiveOk=loginDatabaseAdapter.insertUser(userName,emailAddress,password);
 
-
-        SignUpButton = findViewById(R.id.btnRegister);
-        lnkLogin = findViewById(R.id.lnkLogin);
-
+            android.support.v7.app.AlertDialog alertDialog = new android.support.v7.app.AlertDialog.Builder(this).create();
+            alertDialog.setTitle("SUCCESS!");
+            alertDialog.setMessage("Sign In Now" + receiveOk);
+            alertDialog.setButton(Dialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which)
+                {
+                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                }
+            });
+            alertDialog.show();
+            finish();
+        }
     }
-    /***
-     * Method to initialise the listeners of the Registering page
-     */
-    private void initListeners() {
-        SignUpButton.setOnClickListener(this);
-        lnkLogin.setOnClickListener(this);
-    }
 
-    /**
-     * method to initialise the objects we are going to use for Registering
-     */
-    private void initObjects()
-    {
-        inputValidation = new InputValidation(activity);
-        databaseHelper = new DatabaseHelper(activity);
-        user = new User();
-    }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()){
+    protected void onDestroy() {
+        super.onDestroy();
 
-            case R.id.btnRegister:
-                postDataToSQLite();
-                break;
-
-            case R.id.lnkLogin:
-                finish();
-                break;
-        }
+        loginDatabaseAdapter.close();
     }
-
-
-
-
-
-        public void postDataToSQLite() {
-            if (!inputValidation.isInputEditTextFilled(textInputEditTextUsername, textInputLayoutUsername, getString(R.string.error_message_username))) {
-                return;
-            }
-
-            if (!inputValidation.isInputEditTextFilled(textInputEditTextEmail,textInputLayoutEmail, getString(R.string.error_message_email))) {
-            return;
-            }
-
-
-            if (!inputValidation.isInputEditTextEmail(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
-                return;
-            }
-
-            if (!inputValidation.isInputEditTextFilled(textInputEditTextPassword, textInputLayoutPassword, getString(R.string.error_message_password))) {
-                return;
-            }
-
-            if (!inputValidation.isInputEditTextMatches(textInputEditTextPassword,textInputEditTextConfirmPassword,
-                    textInputLayoutConfirmPassword, getString(R.string.error_password_match))) {
-                return;
-            }
-
-            if(!databaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim())) {
-            user.setUsername(textInputEditTextUsername.getText().toString().trim());
-            user.setEmailAddress(textInputEditTextEmail.getText().toString().trim());
-            user.setPassword(textInputEditTextEmail.getText().toString().trim());
-
-            databaseHelper.addUser(user);
-
-            //Snack bar to show success of the message that saved successfully
-                Snackbar.make(nestedScrollView, getString(R.string.message_success),
-                        Snackbar.LENGTH_LONG).show();
-                emptyInputEditText();
-            }
-            else {
-                //Snack bar will show error message if a user isn't saved successfully or already exists
-                Snackbar.make(nestedScrollView, getString(R.string.error_user_exists), Snackbar.LENGTH_LONG).show();
-            }
-
-        }
-
-    /**
-     * This method is to empty all input edit text
-     */
-    private void emptyInputEditText() {
-        textInputEditTextUsername.setText(null);
-        textInputEditTextEmail.setText(null);
-        textInputEditTextPassword.setText(null);
-        textInputEditTextConfirmPassword.setText(null);
-
-    }
-
 }
 
 

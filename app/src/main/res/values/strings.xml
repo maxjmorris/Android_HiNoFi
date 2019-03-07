@@ -4,7 +4,7 @@
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
 
-    <string name="action_login">Login</string>
+    <string name="action_signIn">Sign In</string>
     <string name="action_sign_up">Sign Up</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
@@ -98,7 +98,6 @@
     <string name="TextViewLogin">Login</string>
     <string name="prompt_username">Username</string>
     <string name="prompt_confirm_password">Confirm Password</string>
-    <string name="btnRegister">Register</string>
     <string name="error_password_match">Passwords don\'t match</string>
     <string name="message_success">User Registered Successfully</string>
     <string name="error_user_exists">User already exists</string>
@@ -109,5 +108,6 @@
     <string name="text_allAccounts">All Accounts</string>
     <string name="btnSend">Send</string>
     <string name="error_valid_email_password">Wrong Email or Password</string>
+
 
 </resources>
