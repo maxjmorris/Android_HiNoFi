@@ -37,27 +37,39 @@
         tools:layout_editor_absoluteY="78dp" />
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/formConstraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="448dp"
+        android:layout_height="400dp"
         android:layout_gravity="center"
         android:background="@color/Box"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="116dp">
 
+        <TextView
+            android:id="@+id/textViewHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="83dp"
+            android:layout_gravity="center"
+            android:text="@string/TextViewHelp"
+            android:textColor="@android:color/black"
+            android:textSize="45sp"
+            tools:layout_editor_absoluteX="134dp"
+            tools:layout_editor_absoluteY="16dp" />
+
         <Button
             android:id="@+id/btnSendEmail"
             android:layout_width="113dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="140dp"
-            android:layout_marginLeft="140dp"
+            android:layout_marginStart="132dp"
+            android:layout_marginLeft="132dp"
             android:layout_marginTop="348dp"
             android:layout_marginBottom="52dp"
             android:background="@drawable/rounded_buttons"
             android:text="Send"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtHelp" />
+            app:layout_constraintTop_toBottomOf="@+id/txtHelp"
+            app:layout_constraintVertical_bias="0.878" />
 
         <TextView
             android:id="@+id/txtHelp"

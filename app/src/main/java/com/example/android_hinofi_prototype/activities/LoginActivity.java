@@ -64,8 +64,8 @@ public class LoginActivity extends AppCompatActivity{
                 storedPassword = loginDatabaseAdapter.getSingleUser(username);
             }
             if (password.equals(storedPassword)) {
-                Intent intent1 = new Intent(LoginActivity.this, HomeActivity.class);
-                startActivity(intent1);
+                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(intent);
                 //finish
             }
             else
