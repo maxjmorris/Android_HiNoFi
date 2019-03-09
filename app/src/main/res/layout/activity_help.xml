@@ -39,22 +39,69 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/formConstraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="500dp"
         android:layout_gravity="center"
         android:background="@color/Box"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="116dp">
 
         <TextView
-            android:id="@+id/textViewHelp"
+            android:id="@+id/txtLogin"
             android:layout_width="wrap_content"
-            android:layout_height="83dp"
+            android:layout_height="0dp"
             android:layout_gravity="center"
-            android:text="@string/TextViewHelp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="321dp"
+            android:text="@string/action_help"
             android:textColor="@android:color/black"
             android:textSize="45sp"
-            tools:layout_editor_absoluteX="134dp"
-            tools:layout_editor_absoluteY="16dp" />
+            app:layout_constraintBottom_toTopOf="@+id/btnSendEmail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextRecipient"
+            android:layout_width="325dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="162dp"
+            android:layout_marginBottom="9dp"
+            android:background="@android:color/white"
+            android:ems="10"
+            android:hint="@string/action_Recipient"
+            android:inputType="textEmailAddress"
+            app:layout_constraintBottom_toTopOf="@+id/editTextSubject"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextSubject"
+            android:layout_width="325dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="12dp"
+            android:background="@android:color/white"
+            android:ems="10"
+            android:hint="@string/action_Subject"
+            android:inputType="textLongMessage"
+            app:layout_constraintBottom_toTopOf="@+id/editTextBodyMessage"
+            app:layout_constraintStart_toStartOf="@+id/editTextRecipient"
+            app:layout_constraintTop_toBottomOf="@+id/editTextRecipient" />
+
+        <EditText
+            android:id="@+id/editTextBodyMessage"
+            android:layout_width="325dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="102dp"
+            android:background="@android:color/white"
+            android:ems="10"
+            android:hint="@string/action_BodyMessage"
+            android:inputType="textLongMessage"
+            app:layout_constraintBottom_toTopOf="@+id/btnSendEmail"
+            app:layout_constraintStart_toStartOf="@+id/editTextSubject"
+            app:layout_constraintTop_toBottomOf="@+id/editTextSubject" />
 
         <Button
             android:id="@+id/btnSendEmail"
@@ -62,28 +109,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="132dp"
             android:layout_marginLeft="132dp"
-            android:layout_marginTop="348dp"
-            android:layout_marginBottom="52dp"
+            android:layout_marginBottom="32dp"
             android:background="@drawable/rounded_buttons"
-            android:text="Send"
+            android:text="Send Help Request"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtHelp"
-            app:layout_constraintVertical_bias="0.878" />
+            app:layout_constraintTop_toBottomOf="@+id/txtLogin" />
 
-        <TextView
-            android:id="@+id/txtHelp"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="270dp"
-            android:text="@string/btnSend"
-            android:textColor="@android:color/black"
-            android:textSize="45sp"
-            app:layout_constraintBottom_toTopOf="@+id/btnSendEmail"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>
