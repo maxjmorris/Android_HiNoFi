@@ -44,9 +44,16 @@ public class HelpActivity extends AppCompatActivity {
     }
 
     protected void sendEmail(){
+
+        //Gets the text from the recipient entry
         txtRecipient = textEditRecipient.getText().toString();
+
+        //Gets the text from the subject entry
         txtSubject = textEditSubject.getText().toString();
+
+        //Gets the text from the body message entry
         txtBodyMessage = textEditBodyMessage.getText().toString();
+
 
         Log.i("Send email","");
         String[] TO = {
