@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+
 import com.example.android_hinofi_prototype.R;
 import com.example.android_hinofi_prototype.adapters.LoginDatabaseAdapter;
 
