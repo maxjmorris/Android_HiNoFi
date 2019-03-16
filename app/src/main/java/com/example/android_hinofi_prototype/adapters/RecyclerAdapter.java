@@ -14,11 +14,11 @@ import com.example.android_hinofi_prototype.models.User;
 
 import java.util.List;
 
-public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdapter.UserViewHolder> {
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.UserViewHolder> {
 
     private List<User> listUsers;
 
-    public UsersRecyclerAdapter(List<User> listUsers){
+    public RecyclerAdapter(List<User> listUsers){
         this.listUsers = listUsers;
     }
 
@@ -41,7 +41,7 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
 
     @Override
     public int getItemCount() {
-        Log.v(UsersRecyclerAdapter.class.getSimpleName(),""+listUsers.size());
+        Log.v(RecyclerAdapter.class.getSimpleName(),""+listUsers.size());
         return listUsers.size();
     }
 

@@ -59,14 +59,6 @@ public class HomeActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
     }
 
@@ -89,6 +81,11 @@ public class HomeActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             Intent settingsIntent = new Intent(HomeActivity.this, SettingsActivity.class);
             startActivity(settingsIntent);
+        }
+        if(id == R.id.action_help)
+        {
+            Intent helpIntent = new Intent(HomeActivity.this, HelpActivity.class);
+            startActivity(helpIntent);
         }
 
         return super.onOptionsItemSelected(item);

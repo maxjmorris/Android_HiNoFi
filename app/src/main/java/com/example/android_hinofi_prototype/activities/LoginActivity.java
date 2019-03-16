@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.android_hinofi_prototype.R;
-import com.example.android_hinofi_prototype.adapters.LoginDatabaseAdapter;
+import com.example.android_hinofi_prototype.adapters.DatabaseAdapter;
 
 
 /**
@@ -27,14 +27,14 @@ public class LoginActivity extends AppCompatActivity{
     String storedPassword;
     Context context=this;
 
-    LoginDatabaseAdapter loginDatabaseAdapter;
+    DatabaseAdapter databaseAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         //Creates an instance of the database
-        loginDatabaseAdapter = new LoginDatabaseAdapter(getApplicationContext());
+        databaseAdapter = new DatabaseAdapter(getApplicationContext());
 
         editTextUserEmail = findViewById(R.id.textEditEmail);
         editTextUserPassword = findViewById(R.id.textEditPassword);
@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity{
     public void  SignIn(View view){
 
         try {
-            loginDatabaseAdapter = loginDatabaseAdapter.open();
+            databaseAdapter = databaseAdapter.open();
             username = editTextUserEmail.getText().toString();
             password = editTextUserPassword.getText().toString();
 
@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity{
             //fetch the password from the database for respective username
             if(!username.equals(""))
             {
-                storedPassword = loginDatabaseAdapter.getSingleUser(username);
+                storedPassword = databaseAdapter.getSingleUser(username);
             }
             if (password.equals(storedPassword)) {
                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
@@ -98,7 +98,7 @@ public class LoginActivity extends AppCompatActivity{
         super.onDestroy();
 
         //Close the database
-        loginDatabaseAdapter.close();
+        databaseAdapter.close();
     }
 }
 

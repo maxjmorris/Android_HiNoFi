@@ -3,11 +3,11 @@ package com.example.android_hinofi_prototype.sql;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.example.android_hinofi_prototype.adapters.LoginDatabaseAdapter;
+import com.example.android_hinofi_prototype.adapters.DatabaseAdapter;
+import com.example.android_hinofi_prototype.models.MusicArtists;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -22,7 +22,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase _db) {
         try {
-            _db.execSQL(LoginDatabaseAdapter.DATABASE_CREATE);
+            _db.execSQL(DatabaseAdapter.DATABASE_CREATE);
         } catch (Exception er) {
             Log.e("Error", "Exception");
         }
