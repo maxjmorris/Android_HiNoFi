@@ -1,1 +1,58 @@
-<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="D:\Desktop\HiNoFi_prototypeDatabase.sql" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><current_tab id="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="2169"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="Music_Artist"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Concerts" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="Music_Artist" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1"></sql><current_tab id="0"/></tab_sql></sqlb_project>
+BEGIN TRANSACTION;
+CREATE TABLE IF NOT EXISTS "MusicArtist" (
+	"MusicArtistID"	INTEGER PRIMARY KEY AUTOINCREMENT,
+	"ArtistName"	TEXT,
+	"Genre"	TEXT,
+	"Followers"	NUMERIC,
+	"Image"	TEXT
+);
+CREATE TABLE IF NOT EXISTS "Concerts" (
+	"ConcertID"	INTEGER PRIMARY KEY AUTOINCREMENT,
+	"Date"	TEXT,
+	"Venue"	TEXT,
+	"Address"	TEXT,
+	"PostCode"	TEXT,
+	"MusicArtistID"	INTEGER,
+	FOREIGN KEY("MusicArtistID") REFERENCES "MusicArtist"("MusicArtistID") ON DELETE SET NULL
+);
+CREATE TABLE IF NOT EXISTS "MusicReleases" (
+	"ReleaseID"	INTEGER PRIMARY KEY AUTOINCREMENT,
+	"SongID"	INTEGER,
+	"MusicArtistID"	INTEGER,
+	"Title"	TEXT,
+	"Genre"	TEXT,
+	"NoOfSongs"	NUMERIC,
+	"ReleaseDate"	TEXT,
+	"TypeOfRelease"	TEXT,
+	FOREIGN KEY("MusicArtistID") REFERENCES "MusicArtist"("MusicArtistID") ON DELETE SET NULL,
+	FOREIGN KEY("SongID") REFERENCES "Songs"("SongID") ON DELETE SET NULL
+);
+CREATE TABLE IF NOT EXISTS "Songs" (
+	"SongID"	INTEGER PRIMARY KEY AUTOINCREMENT,
+	"Title"	TEXT,
+	"Length"	NUMERIC
+);
+CREATE TABLE IF NOT EXISTS "Following" (
+	"FollowingID"	INTEGER PRIMARY KEY AUTOINCREMENT,
+	"MusicArtistID"	INTEGER,
+	"UserID"	INTEGER,
+	FOREIGN KEY("MusicArtistID") REFERENCES "MusicArtist"("MusicArtistID") ON DELETE SET NULL,
+	FOREIGN KEY("UserID") REFERENCES "User"("UserID") ON DELETE SET NULL
+);
+CREATE TABLE IF NOT EXISTS "User" (
+	"UserID"	INTEGER PRIMARY KEY AUTOINCREMENT,
+	"Username"	TEXT,
+	"Email_Address"	TEXT,
+	"Password"	TEXT
+);
+INSERT INTO "MusicArtist" VALUES (1,'Post Malone','Hip-hop','',NULL);
+INSERT INTO "MusicArtist" VALUES (2,'Kendrick Lamar','Rap',NULL,NULL);
+INSERT INTO "MusicArtist" VALUES (3,'Calvin Harris','Dance',NULL,NULL);
+INSERT INTO "MusicArtist" VALUES (4,'Taylor Swift','Pop',NULL,NULL);
+INSERT INTO "MusicArtist" VALUES (5,'Fallout Boy','Rock',NULL,NULL);
+INSERT INTO "MusicArtist" VALUES (6,'Hans Zimmer',NULL,'',NULL);
+INSERT INTO "Following" VALUES (1,1,6);
+INSERT INTO "Following" VALUES (2,2,6);
+INSERT INTO "Following" VALUES (3,3,NULL);
+INSERT INTO "User" VALUES (6,'maxamill','morrm046@gmail.com','scooby');
+COMMIT;

@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.example.android_hinofi_prototype.adapters.DatabaseAdapter;
 import com.example.android_hinofi_prototype.models.MusicArtists;
+import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
