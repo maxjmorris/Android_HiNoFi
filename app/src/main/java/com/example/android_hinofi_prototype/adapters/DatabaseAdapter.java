@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
+
 import com.example.android_hinofi_prototype.models.MusicArtists;
 import com.example.android_hinofi_prototype.sql.DatabaseHelper;
 
@@ -16,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class DatabaseAdapter {
+public class DatabaseAdapter extends SQLiteAssetHelper {
 
 
     //Database Version
@@ -40,13 +42,12 @@ public class DatabaseAdapter {
     //variable to hold the database instance
     public static SQLiteDatabase db;
     //Context of the application using the database
-    private final Context context;
+    private Context context;
     //Database open/upgrade helper
     private static DatabaseHelper dbHelper;
 
-    public DatabaseAdapter(Context _context) {
-        context = _context;
-        dbHelper = new DatabaseHelper(context, DB_NAME, null, DB_VERSION);
+    public DatabaseAdapter(Context context) {
+        super(context, DB_NAME,null,DB_VERSION);
     }
 
     //Method to operate the database
@@ -89,7 +90,7 @@ public class DatabaseAdapter {
         return ok;
     }
 
-    //method to delete a record of Usernmae
+    //method to delete a record of Username
     public int deleteUser(String UserName) {
 
         String where = "Username=?";
@@ -153,7 +154,7 @@ public class DatabaseAdapter {
     }
     public List<String> getArtistName()
     {
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         String[] sqlSelect = {"ArtistName"};
         String tableName = "MusicArtist";
