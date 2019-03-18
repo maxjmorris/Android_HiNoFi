@@ -25,7 +25,6 @@ public class RegisterActivity extends AppCompatActivity {
     private String emailAddress;
     private String password;
     private String dateOfBirth;
-    Button btnSignUp = findViewById(R.id.btnSignUp);
     String receiveOk;
     DatabaseAdapter databaseAdapter;
 
@@ -34,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        //get instance of the database adapter
+        //get instance of the databases adapter
         databaseAdapter = new DatabaseAdapter(getApplicationContext());
         databaseAdapter = databaseAdapter.open();
         textEditEmail = findViewById(R.id.textEditEmail);
@@ -65,7 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
             alertDialog.show();
         }
         else {
-            //Save the data in the database
+            //Save the data in the databases
             receiveOk= databaseAdapter.insertUser(userName,emailAddress,password, dateOfBirth);
 
             android.support.v7.app.AlertDialog alertDialog = new android.support.v7.app.AlertDialog.Builder(this).create();

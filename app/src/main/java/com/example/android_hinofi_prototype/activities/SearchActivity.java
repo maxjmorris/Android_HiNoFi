@@ -76,7 +76,10 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onSearchStateChanged(boolean enabled) {
                 if(!enabled)
+                {
+                    searchAdapter = new SearchAdapter(getBaseContext(), database.getMusicArtists());
                     recyclerView.setAdapter(searchAdapter);
+                }
             }
 
             @Override

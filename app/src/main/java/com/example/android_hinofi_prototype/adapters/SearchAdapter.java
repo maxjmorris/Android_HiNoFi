@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.view.View;
 
 import com.example.android_hinofi_prototype.R;
-import com.example.android_hinofi_prototype.models.MusicArtists;
+import com.example.android_hinofi_prototype.models.MusicArtist;
 
 import java.util.List;
 
@@ -30,16 +30,16 @@ class  SearchViewHolder extends RecyclerView.ViewHolder
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
     private Context context;
-    private List<MusicArtists> musicArtists;
+    private List<MusicArtist> musicArtists;
 
-    public SearchAdapter(Context context, List<MusicArtists> musicArtists) {
+    public SearchAdapter(Context context, List<MusicArtist> musicArtists) {
         this.context = context;
         this.musicArtists = musicArtists;
     }
 
 
     @Override
-    public SearchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public SearchViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View itemView = inflater.inflate(R.layout.layout_item_music_artist, parent, false);
         return new SearchViewHolder(itemView);
@@ -49,7 +49,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
     public void onBindViewHolder(SearchViewHolder holder, int position)
     {
         holder.artistName.setText(musicArtists.get(position).ArtistName);
-        holder.genre.setText(musicArtists.get(position).Genre);
+//        holder.genre.setText(musicArtists.get(position).Genre);
     }
 
     @Override

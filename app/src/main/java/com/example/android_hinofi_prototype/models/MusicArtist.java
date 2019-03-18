@@ -1,11 +1,11 @@
 package com.example.android_hinofi_prototype.models;
 
-public class MusicArtists {
+public class MusicArtist {
 
     public  int MusicArtistID;
     public String ArtistName,Genre,Image;
 
-    public MusicArtists(int musicArtistID, String artistName, String genre, String image) {
+    public MusicArtist(int musicArtistID, String artistName, String genre, String image) {
         MusicArtistID = musicArtistID;
         ArtistName = artistName;
         Genre = genre;
@@ -13,7 +13,7 @@ public class MusicArtists {
     }
 
 
-   public MusicArtists()
+   public MusicArtist()
    {
 
    }

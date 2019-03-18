@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        //Creates an instance of the database
+        //Creates an instance of the databases
         databaseAdapter = new DatabaseAdapter(getApplicationContext());
 
         editTextUserEmail = findViewById(R.id.textEditEmail);
@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity{
                 alertDialog.show();
             }
 
-            //fetch the password from the database for respective username
+            //fetch the password from the databases for respective username
             if(!username.equals(""))
             {
                 storedPassword = databaseAdapter.getSingleUser(username);
@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity{
     protected void onDestroy() {
         super.onDestroy();
 
-        //Close the database
+        //Close the databases
         databaseAdapter.close();
     }
 }
