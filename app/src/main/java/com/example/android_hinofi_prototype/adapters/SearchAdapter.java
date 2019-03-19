@@ -15,13 +15,14 @@ import java.util.List;
 
 class   SearchViewHolder extends RecyclerView.ViewHolder
 {
-    public TextView artistName,genre;
+    public TextView artistName,genre,image;
 
     public SearchViewHolder(View itemView )
     {
         super(itemView);
         artistName = itemView.findViewById(R.id.music_artist_name);
         genre = itemView.findViewById(R.id.genre);
+        image = itemView.findViewById(R.id.imageView);
 
     }
 }

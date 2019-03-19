@@ -128,7 +128,7 @@ public class HomeActivity extends AppCompatActivity {
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
+     * one of the sections/tabs/pages.l
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 

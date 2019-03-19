@@ -7,6 +7,7 @@ public class User {
     private String emailAddress;
     private String username;
     private String password;
+    private String dateofBirth;
 
 
 
@@ -58,4 +59,15 @@ public class User {
         this.emailAddress = emailAddress;
     }
 
+    /***
+     *Get set for date of birth
+     */
+
+    public String getDateofBirth() {
+        return this.dateofBirth;
+    }
+
+    public void setDateofBirth(String dateofBirth) {
+        this.dateofBirth = dateofBirth;
+    }
 }
