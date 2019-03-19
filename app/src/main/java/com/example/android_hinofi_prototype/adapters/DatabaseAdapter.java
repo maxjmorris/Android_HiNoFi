@@ -196,7 +196,7 @@ public class DatabaseAdapter {
     {
         SQLiteDatabase db = myDbHelper.getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-        String[] sqlSelect = {"ArtistName"};
+        String[] sqlSelect = {"MusicArtistID", "ArtistName", "Genre", "Image"};
         String tableName = "MusicArtist";
 
         qb.setTables(tableName);

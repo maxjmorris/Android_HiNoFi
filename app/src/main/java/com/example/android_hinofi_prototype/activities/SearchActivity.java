@@ -35,12 +35,12 @@ public class SearchActivity extends AppCompatActivity {
 
 
         //init view
-        recyclerView = findViewById(R.id.music_artist_recycler_search);
+        recyclerView = findViewById(R.id.recycler_search);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.hasFixedSize();
 
-        materialSearchBar =  findViewById(R.id.search_bar);
+        materialSearchBar = findViewById(R.id.search_bar);
 
 
         //init DB
@@ -77,9 +77,10 @@ public class SearchActivity extends AppCompatActivity {
             public void onSearchStateChanged(boolean enabled) {
                 if(!enabled)
                 {
-                    searchAdapter = new SearchAdapter(getBaseContext(), database.getMusicArtists());
+                    searchAdapter = new SearchAdapter(getBaseContext(),database.getMusicArtists());
                     recyclerView.setAdapter(searchAdapter);
                 }
+
             }
 
             @Override
@@ -96,6 +97,7 @@ public class SearchActivity extends AppCompatActivity {
 
         //Init adapter default set all result
         searchAdapter = new SearchAdapter(this, database.getMusicArtists());
+        recyclerView.setAdapter(searchAdapter);
     }
 
     private void startSearch(String text)
@@ -107,5 +109,6 @@ public class SearchActivity extends AppCompatActivity {
     private void loadSuggestList()
     {
         suggestList = database.getArtistName();
+        materialSearchBar.setLastSuggestions(suggestList);
     }
 }
