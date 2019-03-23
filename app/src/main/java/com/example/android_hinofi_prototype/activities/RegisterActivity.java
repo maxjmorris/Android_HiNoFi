@@ -34,7 +34,8 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         //get instance of the databases adapter
-        databaseAdapter = new DatabaseAdapter(getApplicationContext());
+        //init DB
+        databaseAdapter = new DatabaseAdapter(this);
         databaseAdapter = databaseAdapter.open();
         textEditEmail = findViewById(R.id.textEditEmail);
         textEditPassword = findViewById(R.id.textEditPassword);

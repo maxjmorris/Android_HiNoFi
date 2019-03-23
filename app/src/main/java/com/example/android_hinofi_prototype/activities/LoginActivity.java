@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity{
         setContentView(R.layout.activity_login);
         //Creates an instance of the databases
         databaseAdapter = new DatabaseAdapter(getApplicationContext());
-
+        databaseAdapter = databaseAdapter.createDatabase();
         editTextUserEmail = findViewById(R.id.textEditEmail);
         editTextUserPassword = findViewById(R.id.textEditPassword);
     }
