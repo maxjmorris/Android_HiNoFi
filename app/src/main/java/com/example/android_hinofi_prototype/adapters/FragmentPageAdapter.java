@@ -1,11 +1,9 @@
 package com.example.android_hinofi_prototype.adapters;
 
-import android.content.Context;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-
 import com.example.android_hinofi_prototype.fragments.FeedFragment;
 import com.example.android_hinofi_prototype.fragments.MyAccountFragment;
 import com.example.android_hinofi_prototype.fragments.SearchFragment;
@@ -15,7 +13,7 @@ public class FragmentPageAdapter extends FragmentPagerAdapter {
     final int PAGE_COUNT = 3;
     //Tab Titles
     private String tabTitles[] = new String[]{"Feed","Search","My Account"};
-    Context context;
+
 
     public FragmentPageAdapter(FragmentManager fm)
     {
@@ -54,6 +52,7 @@ public class FragmentPageAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position)
     {
+        //returns the page titles for the tabs
         return tabTitles[position];
     }
 }

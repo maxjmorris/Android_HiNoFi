@@ -48,17 +48,10 @@ public class DatabaseAdapter {
 
     }
 
-    public DatabaseAdapter createDatabase()throws SQLException
+    public DatabaseAdapter createDatabase()
     {
-        try {
             myDbHelper.createDatabase();
-        }
-        catch (IOException myIOException)
-        {
-            Log.e(TAG, myIOException.toString() + "UnableToCreateDatabase");
-            throw new Error("UnableToCreateDatabase");
-        }
-        return this;
+            return this;
     }
 
     //Method to operate the databases
