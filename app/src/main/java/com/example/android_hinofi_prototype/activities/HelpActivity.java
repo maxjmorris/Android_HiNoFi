@@ -21,6 +21,7 @@ public class HelpActivity extends AppCompatActivity {
     private String txtRecipient;
     private String txtSubject;
     private String txtBodyMessage;
+    private Button btnSendHelp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +35,8 @@ public class HelpActivity extends AppCompatActivity {
 
 
         //The send button
-        Button btnsendEmail = findViewById(R.id.btnSendEmail);
-        btnsendEmail.setOnClickListener(new View.OnClickListener() {
+        btnSendHelp = findViewById(R.id.btnSendHelp);
+        btnSendHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sendEmail();

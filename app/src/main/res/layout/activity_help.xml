@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,20 +10,16 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".activities.LoginActivity"
-    android:background="@color/BackgroundColour"
-    >
-
+    android:background="@color/BackgroundColour">
     <TextView
         android:id="@+id/txtTitle"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="70dp"
         android:text="@string/text_Title"
         android:textColor="@color/Title"
-        android:textSize="36sp"
+        android:textSize="50sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="150dp"
-        tools:layout_editor_absoluteY="16dp" />
-
+        />
     <TextView
         android:id="@+id/txtSubtitle"
         android:layout_width="wrap_content"
@@ -33,88 +28,103 @@
         android:textColor="@color/Subtitle"
         android:textSize="16sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="138dp"
-        tools:layout_editor_absoluteY="78dp" />
+        />
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/formConstraintLayout"
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/help_form"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="500sp"
         android:layout_gravity="center"
-        android:background="@color/Box"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="116dp">
+        android:background="@color/Box">
 
-        <TextView
-            android:id="@+id/txtLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="321dp"
-            android:text="@string/action_help"
-            android:textColor="@android:color/black"
-            android:textSize="45sp"
-            app:layout_constraintBottom_toTopOf="@+id/btnSendEmail"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/editTextRecipient"
-            android:layout_width="325dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="162dp"
-            android:layout_marginBottom="9dp"
-            android:background="@android:color/white"
-            android:ems="10"
-            android:hint="@string/action_Recipient"
-            android:inputType="textEmailAddress"
-            app:layout_constraintBottom_toTopOf="@+id/editTextSubject"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/editTextSubject"
-            android:layout_width="325dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="12dp"
-            android:background="@android:color/white"
-            android:ems="10"
-            android:hint="@string/action_Subject"
-            android:inputType="textLongMessage"
-            app:layout_constraintBottom_toTopOf="@+id/editTextBodyMessage"
-            app:layout_constraintStart_toStartOf="@+id/editTextRecipient"
-            app:layout_constraintTop_toBottomOf="@+id/editTextRecipient" />
-
-        <EditText
-            android:id="@+id/editTextBodyMessage"
-            android:layout_width="325dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="102dp"
-            android:background="@android:color/white"
-            android:ems="10"
-            android:hint="@string/action_BodyMessage"
-            android:inputType="textLongMessage"
-            app:layout_constraintBottom_toTopOf="@+id/btnSendEmail"
-            app:layout_constraintStart_toStartOf="@+id/editTextSubject"
-            app:layout_constraintTop_toBottomOf="@+id/editTextSubject" />
-
-        <Button
-            android:id="@+id/btnSendEmail"
-            android:layout_width="113dp"
+        <LinearLayout
+            android:id="@+id/help_formLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="132dp"
-            android:layout_marginLeft="132dp"
-            android:layout_marginBottom="32dp"
-            android:background="@drawable/rounded_buttons"
-            android:text="Send Help Request"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtLogin" />
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
 
-    </android.support.constraint.ConstraintLayout>
+            <TextView
+                android:id="@+id/txtHelp"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/TextViewHelp"
+                android:textColor="@android:color/black"
+                android:textSize="45sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="70sp"
+                />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayoutRecipient"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15sp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/editTextRecipient"
+                    android:layout_width="300sp"
+                    android:layout_height="35sp"
+                    android:layout_gravity="center"
+
+                    android:background="@android:color/white"
+                    android:hint="@string/prompt_recipient"
+                    android:textColor="@android:color/black" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayoutSubject"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15sp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/editTextSubject"
+                    android:layout_width="300sp"
+                    android:layout_height="35sp"
+                    android:layout_gravity="center"
+                    android:background="@android:color/white"
+                    android:hint="@string/prompt_subject"
+                    android:textColor="@android:color/black" />
+
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayoutBodyMessage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15sp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/editTextBodyMessage"
+                    android:layout_width="300sp"
+                    android:layout_height="100sp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="15sp"
+                    android:background="@android:color/white"
+                    android:hint="@string/prompt_bodyMessage"
+                    android:textColor="@android:color/black" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnSendHelp"
+                style="?android:textAppearanceSmall"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="50sp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_buttons"
+                android:text="@string/action_sendHelp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
 </LinearLayout>

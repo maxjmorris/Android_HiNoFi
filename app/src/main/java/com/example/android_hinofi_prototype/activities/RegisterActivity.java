@@ -4,30 +4,33 @@ import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.android_hinofi_prototype.R;
 import com.example.android_hinofi_prototype.adapters.DatabaseAdapter;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    Context context = this;
-    private EditText textEditUsername;// allows to connect to the text entry for username in register
-    private EditText textEditEmail;// allows to connect to the text entry for email address in register
-    private EditText textEditPassword;// allows to connect to the text entry for password in register
-    private EditText textEditDOB;// allows to connect to the text entry for date of birth in register
-    private EditText textEditConifrmPassword;// allows to connect to the text entry for password in register
+    /**
+     * Create objects fot the text entries in the register page
+     */
+    private EditText textEditUsername;
+    private EditText textEditEmail;
+    private EditText textEditPassword;
+    private EditText textEditDOB;
+    private EditText textEditConfirmPassword;
 
     private String userName;
     private String emailAddress;
     private String password;
     private String dateOfBirth;
-    private String confirmPassword;
+    private Button btnSignUpUser;
+    private TextView linkLoginPage;
     String receiveOk;
     DatabaseAdapter databaseAdapter;
 
@@ -37,15 +40,45 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         //get instance of the databases adapter
-        //init DB
+        /**
+         * Connects to the database adapter and will open the database in the app
+         */
         databaseAdapter = new DatabaseAdapter(this);
         databaseAdapter = databaseAdapter.open();
+        /**
+         * Initialises the view for the register page
+         */
         textEditEmail = findViewById(R.id.textEditEmail);
         textEditPassword = findViewById(R.id.textEditPassword);
-        textEditConifrmPassword = findViewById(R.id.textEditConfirmPassword);
+        textEditConfirmPassword = findViewById(R.id.textEditConfirmPassword);
         textEditUsername = findViewById(R.id.textEditUsername);
         textEditDOB = findViewById(R.id.textEditDOB);
+        btnSignUpUser = findViewById(R.id.btnSignUpUser);
+        /**
+         * Initiates the insertion of the user signing them by clicking the sign up button
+         */
+        btnSignUpUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OK(v);
+            }
+        });
+
+        /***
+         * Will send the user back to the login page
+         */
+        linkLoginPage = findViewById(R.id.lnkLogin);
+        linkLoginPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
+
 
 
 
@@ -55,7 +88,6 @@ public class RegisterActivity extends AppCompatActivity {
         emailAddress = textEditEmail.getText().toString();
         password = textEditPassword.getText().toString();
         dateOfBirth = textEditDOB.getText().toString();
-        confirmPassword = textEditConifrmPassword.toString();
 
 
         if ((userName.equals("")) || (emailAddress.equals("")) || (password.equals("")) || (dateOfBirth.equals(""))) {
@@ -75,7 +107,7 @@ public class RegisterActivity extends AppCompatActivity {
         else {
 
 
-            if (!textEditPassword.getText().toString().equals(textEditConifrmPassword.getText().toString()))
+            if (!textEditPassword.getText().toString().equals(textEditConfirmPassword.getText().toString()))
             {
                 AlertDialog alertDialog = new AlertDialog.Builder(this).create();
                 alertDialog.setTitle("ALERT!");
