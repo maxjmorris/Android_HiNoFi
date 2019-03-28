@@ -36,6 +36,7 @@ import java.util.List;
  */
 public class SettingsActivity extends AppCompatPreferenceActivity {
 
+
     /**
      * A preference value change listener that updates the preference's summary
      * to reflect its new value.
@@ -131,6 +132,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             // Show the Up button in the action bar.
+            actionBar.setTitle("Settings");
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }

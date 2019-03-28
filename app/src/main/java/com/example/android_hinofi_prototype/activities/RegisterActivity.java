@@ -39,9 +39,10 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        getSupportActionBar().setTitle("Sign Up");
         //get instance of the databases adapter
         /**
-         * Connects to the database adapter and will open the database in the app
+         * Connects to the databaseAdapter adapter and will open the databaseAdapter in the app
          */
         databaseAdapter = new DatabaseAdapter(this);
         databaseAdapter = databaseAdapter.open();

@@ -4,16 +4,6 @@
     tools:context="com.example.android_hinofi_prototype.activities.HomeActivity"
     >
     <item
-        android:id="@+id/action_search"
-        android:orderInCategory="100"
-        android:title="@string/action_search"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
-    <item
         android:id="@+id/action_help"
         android:orderInCategory="100"
         android:title="@string/action_help"

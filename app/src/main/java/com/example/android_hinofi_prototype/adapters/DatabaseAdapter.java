@@ -10,9 +10,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.android_hinofi_prototype.models.MusicArtist;
+import com.example.android_hinofi_prototype.models.User;
 import com.example.android_hinofi_prototype.sql.DatabaseHelper;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +25,9 @@ public class DatabaseAdapter {
 //    //databases Name
 //    static final String DB_NAME = "HiNoFi_prototypeDatabase.myDb";
 
+    public static String getUsername = "";
+    public static String getEmailAddress = "";
+    public static String getImage = "";
     public static String getPassword = "";
 
 //    public static final int NAME_COLUMN = 1;
@@ -112,6 +115,21 @@ public class DatabaseAdapter {
                 numberOfUsersDeleted, Toast.LENGTH_LONG).show();
         return numberOfUsersDeleted;
     }
+    //method to get the users details
+    public String getSingleUserDetails(String userName) {
+
+        myDb = myDbHelper.getReadableDatabase();
+        Cursor cursor = myDb.query("User", null, "Username=?", new String[]
+                {userName}, null, null, null);
+        if (cursor.getCount() < 1) //Email Address doesn't exist
+            return "NOT EXIST";
+        cursor.moveToFirst();
+        getUsername = cursor.getString(cursor.getColumnIndex("Username"));
+        getEmailAddress = cursor.getString(cursor.getColumnIndex("EmailAddress"));
+
+        return getEmailAddress + getUsername;
+
+    }
 
     //method to get the password of the username
     public String getSingleUser(String userName) {
@@ -141,13 +159,13 @@ public class DatabaseAdapter {
 
     //Method to get the artists name
     public List<MusicArtist> getMusicArtists() {
-        SQLiteDatabase db = myDbHelper.getReadableDatabase();
+        SQLiteDatabase myDb = myDbHelper.getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         String[] sqlSelect = {"MusicArtistID", "ArtistName", "Genre", "Image"};
         String tableName = "MusicArtist";
 
         qb.setTables(tableName);
-        Cursor cursor = qb.query(db, sqlSelect, null, null, null, null, null);
+        Cursor cursor = qb.query(myDb, sqlSelect, null, null, null, null, null);
         List<MusicArtist> result = new ArrayList<>();
         if (cursor.moveToFirst()) {
             do {

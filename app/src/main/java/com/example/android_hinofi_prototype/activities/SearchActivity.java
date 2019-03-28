@@ -25,7 +25,7 @@ public class SearchActivity extends AppCompatActivity {
     MaterialSearchBar materialSearchBar;
     List<String> suggestList  = new ArrayList<>();
 
-    DatabaseAdapter database;
+    DatabaseAdapter databaseAdapter;
 
 
     @Override
@@ -33,6 +33,7 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        getSupportActionBar().setTitle("Search");
 
         //init view
         recyclerView = findViewById(R.id.recycler_search);
@@ -44,7 +45,7 @@ public class SearchActivity extends AppCompatActivity {
 
 
         //init DB
-        database = new DatabaseAdapter(this);
+        databaseAdapter = new DatabaseAdapter(this);
 
         //Sets up the search bar
         materialSearchBar.setHint("Search");
@@ -77,7 +78,7 @@ public class SearchActivity extends AppCompatActivity {
             public void onSearchStateChanged(boolean enabled) {
                 if(!enabled)
                 {
-                    searchAdapter = new SearchAdapter(getBaseContext(),database.getMusicArtists());
+                    searchAdapter = new SearchAdapter(getBaseContext(), databaseAdapter.getMusicArtists());
                     recyclerView.setAdapter(searchAdapter);
                 }
 
@@ -96,19 +97,20 @@ public class SearchActivity extends AppCompatActivity {
 
 
         //Init adapter default set all result
-        searchAdapter = new SearchAdapter(this, database.getMusicArtists());
+        searchAdapter = new SearchAdapter(this, databaseAdapter.getMusicArtists());
         recyclerView.setAdapter(searchAdapter);
     }
 
+
     private void startSearch(String text)
     {
-        searchAdapter = new SearchAdapter(this,database.getMusicArtistByName(text));
+        searchAdapter = new SearchAdapter(this, databaseAdapter.getMusicArtistByName(text));
         recyclerView.setAdapter(searchAdapter);
     }
 
     private void loadSuggestList()
     {
-        suggestList = database.getArtistName();
+        suggestList = databaseAdapter.getArtistName();
         materialSearchBar.setLastSuggestions(suggestList);
     }
 }

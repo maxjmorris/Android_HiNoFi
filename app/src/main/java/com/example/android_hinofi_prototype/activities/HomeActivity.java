@@ -25,8 +25,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = findViewById(R.id.container);
@@ -55,11 +53,19 @@ public class HomeActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        //links to the search page
+        if(id == R.id.action_search)
+        {
+            Intent searchIntent = new Intent(HomeActivity.this, SearchActivity.class);
+            startActivity(searchIntent);
+        }
+
+        //links to the settings page
         if (id == R.id.action_settings) {
             Intent settingsIntent = new Intent(HomeActivity.this, SettingsActivity.class);
             startActivity(settingsIntent);
         }
+        //links to the help page
         if(id == R.id.action_help)
         {
             Intent helpIntent = new Intent(HomeActivity.this, HelpActivity.class);

@@ -1,5 +1,6 @@
 package com.example.android_hinofi_prototype.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,8 +10,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.android_hinofi_prototype.R;
+import com.example.android_hinofi_prototype.activities.SearchActivity;
+import com.example.android_hinofi_prototype.adapters.DatabaseAdapter;
 
 public class MyAccountFragment extends Fragment {
+
+    DatabaseAdapter databaseAdapter;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        databaseAdapter = new DatabaseAdapter(context);
+    }
 
     @Nullable
     @Override
@@ -18,5 +29,9 @@ public class MyAccountFragment extends Fragment {
         //Get view of the My Account fragment
         View view = inflater.inflate(R.layout.myaccountfragment, container, false);
         return view;
+
+
+
+
     }
 }
