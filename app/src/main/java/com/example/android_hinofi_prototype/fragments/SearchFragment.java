@@ -32,12 +32,12 @@ public class SearchFragment extends Fragment {
 
 
 
-    @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //Get view of the Search fragment
         View view = inflater.inflate(R.layout.activity_search, container, false);
         return view;
+
     }
 
     @Override
@@ -45,22 +45,6 @@ public class SearchFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
 
-        //init view
-        recyclerView = view.findViewById(R.id.recycler_search);
-        layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.hasFixedSize();
-
-        materialSearchBar = view.findViewById(R.id.recycler_search);
-
-
-        //init DB
-        databaseAdapter = new DatabaseAdapter(getActivity());
-
-        //Sets up the search bar
-        materialSearchBar.setHint("Search");
-        materialSearchBar.setCardViewElevation(10);
-        loadSuggestList();
         materialSearchBar.addTextChangeListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

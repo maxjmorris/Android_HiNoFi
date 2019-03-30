@@ -15,13 +15,6 @@ import com.example.android_hinofi_prototype.adapters.DatabaseAdapter;
 
 public class MyAccountFragment extends Fragment {
 
-    DatabaseAdapter databaseAdapter;
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        databaseAdapter = new DatabaseAdapter(context);
-    }
 
     @Nullable
     @Override
