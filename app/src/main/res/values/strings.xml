@@ -7,6 +7,7 @@
     <string name="prompt_bodyMessage">Message</string>
     <string name="prompt_subject">Subject</string>
 
+    <string name="action_myFeed">My Feed</string>
     <string name="action_myAccount"> My Account</string>
     <string name="action_help">Help</string>
     <string name="action_signIn">Sign In</string>

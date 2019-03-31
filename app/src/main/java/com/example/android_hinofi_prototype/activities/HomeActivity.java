@@ -26,6 +26,9 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId())
                 {
+                    case R.id.bottom_nav_myFeed:
+                        Toast.makeText(HomeActivity.this, "Test for my Feed page", Toast.LENGTH_SHORT).show();
+                        break;
                     case R.id.bottom_nav_search:
                         Intent intent = new Intent(HomeActivity.this, SearchActivity.class);
                         startActivity(intent);
