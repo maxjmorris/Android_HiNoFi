@@ -55,13 +55,6 @@ public class HomeActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //links to the search page
-        if(id == R.id.action_search)
-        {
-            Intent searchIntent = new Intent(HomeActivity.this, SearchActivity.class);
-            startActivity(searchIntent);
-        }
-
         //links to the settings page
         if (id == R.id.action_settings) {
             Intent settingsIntent = new Intent(HomeActivity.this, SettingsActivity.class);

@@ -50,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/TextViewHelp"
+                android:text="@string/TxtViewHelp"
                 android:textColor="@android:color/black"
                 android:textSize="45sp"
                 android:textStyle="bold"

@@ -1,21 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.HomeActivity"
     android:background="@color/BackgroundColour"
-    >
+    tools:context=".activities.HomeActivity">
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="106dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginLeft="128dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="589dp"
+        android:text="@string/text_Title"
+        android:textColor="@color/Title"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav_home"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/txtSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="61dp"
+        android:text="@string/text_Subtitle"
+        android:textColor="@color/Subtitle"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/txtTitle"
+        app:layout_constraintTop_toTopOf="@+id/txtTitle" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/welcome_form"
+        android:layout_width="352dp"
+        android:layout_height="259dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="69dp"
+        android:layout_marginLeft="69dp"
+        android:layout_marginTop="207dp"
+        android:layout_marginEnd="69dp"
+        android:layout_marginRight="69dp"
+        android:layout_marginBottom="213dp"
+        android:background="@color/Box"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav_home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txtWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30sp"
+            android:text="@string/TxtViewWelcome"
+            android:textColor="@android:color/black"
+            android:textSize="45sp"
+            android:textStyle="bold" />
+    </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_nav_home"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="137dp"
         android:layout_alignParentBottom="true"
         app:itemBackground="@color/btnColour"
         app:itemIconTint="@drawable/nav_item_colour_state"
         app:itemTextColor="@drawable/nav_item_colour_state"
-        app:menu="@menu/bottom_navigation_home">
-    </android.support.design.widget.BottomNavigationView>
-</RelativeLayout>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_form"
+        app:menu="@menu/bottom_navigation_home"></android.support.design.widget.BottomNavigationView>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.466" />
+</android.support.constraint.ConstraintLayout>

@@ -102,9 +102,11 @@
     <string name="error_message_username">Enter A valid username</string>
     <string name="error_message_email">Enter A valid email</string>
     <string name="error_message_password">Enter A valid Password</string>
-    <string name="TextViewSignUp">Sign Up</string>
-    <string name="TextViewLogin">Login</string>
-    <string name="TextViewHelp">Help</string>
+    <string name="TxtViewSignUp">Sign Up</string>
+    <string name="TxtViewLogin">Login</string>
+    <string name="TxtViewHelp">Help</string>
+    <string name="TxtViewWelcome">Welcome</string>
+    <string name="TxtViewMyAccount">My Account</string>
     <string name="prompt_username">Username</string>
     <string name="prompt_confirm_password">Confirm Password</string>
     <string name="error_password_match">Passwords don\'t match</string>

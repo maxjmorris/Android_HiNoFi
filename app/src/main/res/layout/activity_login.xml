@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:text="@string/TextViewLogin"
+                android:text="@string/TxtViewLogin"
                 android:textStyle="bold"
                 android:layout_marginBottom="30sp"
                 android:textColor="@android:color/black"
