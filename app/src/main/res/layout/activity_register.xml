@@ -62,14 +62,14 @@
                     android:textSize="45sp" />
 
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/textInputLayoutUsername"
+                    android:id="@+id/textInputLayoutUsernameSignUp"
                     android:layout_width="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="15sp"
                     android:layout_height="wrap_content">
 
                     <android.support.design.widget.TextInputEditText
-                        android:id="@+id/textEditUsername"
+                        android:id="@+id/textEditUsernameSignUp"
                         android:layout_width="300sp"
                         android:layout_height="35sp"
                         android:layout_gravity="center"
@@ -84,14 +84,14 @@
 
 
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/textInputLayoutEmail"
+                    android:id="@+id/textInputLayoutEmailAddress"
                     android:layout_width="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="15sp"
                     android:layout_height="wrap_content">
 
                     <android.support.design.widget.TextInputEditText
-                        android:id="@+id/textEditEmail"
+                        android:id="@+id/textEditEmailAddress"
                         android:layout_width="300sp"
                         android:layout_height="35sp"
                         android:layout_gravity="center"

@@ -49,10 +49,10 @@ public class RegisterActivity extends AppCompatActivity {
         /**
          * Initialises the view for the register page
          */
-        textEditEmail = findViewById(R.id.textEditEmail);
+        textEditEmail = findViewById(R.id.textEditEmailAddress);
         textEditPassword = findViewById(R.id.textEditPassword);
         textEditConfirmPassword = findViewById(R.id.textEditConfirmPassword);
-        textEditUsername = findViewById(R.id.textEditUsername);
+        textEditUsername = findViewById(R.id.textEditUsernameSignUp);
         textEditDOB = findViewById(R.id.textEditDOB);
         btnSignUpUser = findViewById(R.id.btnSignUpUser);
         /**
