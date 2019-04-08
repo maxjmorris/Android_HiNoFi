@@ -13,7 +13,6 @@ import com.mancj.materialsearchbar.MaterialSearchBar;
 public class SearchActivity extends AppCompatActivity {
 
 
-
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     SearchAdapter searchAdapter;
@@ -44,34 +43,10 @@ public class SearchActivity extends AppCompatActivity {
         //Sets up the search bar
         materialSearchBar.setHint("Search");
         materialSearchBar.setCardViewElevation(10);
-//        loadSuggestList();
-//        materialSearchBar.addTextChangeListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-////                List<String> suggest = new ArrayList<>();
-////                for(String search:suggestList)
-////                {
-////                    if(search.toLowerCase().contains(materialSearchBar.getText().toLowerCase()))
-////
-////                }
-////                materialSearchBar.setLastSuggestions(suggest);
-//            }
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//
-//            }
-//        });
         materialSearchBar.setOnSearchActionListener(new MaterialSearchBar.OnSearchActionListener() {
             @Override
             public void onSearchStateChanged(boolean enabled) {
-                if(!enabled)
-                {
-//                    searchAdapter = new SearchAdapter(getBaseContext(), databaseAdapter.getMusicArtists());
+                if (!enabled) {
                     recyclerView.setAdapter(searchAdapter);
                 }
 
@@ -89,21 +64,13 @@ public class SearchActivity extends AppCompatActivity {
         });
 
 
-        //Init adapter default set all result
-//        searchAdapter = new SearchAdapter(this, databaseAdapter.getMusicArtists());
+        //set recycler view to the search adapter
         recyclerView.setAdapter(searchAdapter);
     }
 
 
-    private void startSearch(String text)
-    {
+    private void startSearch(String text) {
         searchAdapter = new SearchAdapter(this, databaseAdapter.getMusicArtistByName(text));
         recyclerView.setAdapter(searchAdapter);
     }
-
-//    private void loadSuggestList()
-//    {
-//        suggestList = databaseAdapter.getArtistName();
-//        materialSearchBar.setLastSuggestions(suggestList);
-//    }
 }

@@ -83,6 +83,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
+    //Signs up the user when button is clicked
     public void OK(View view) {
 
         userName = textEditUsername.getText().toString();
@@ -107,7 +108,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         else {
 
-
+            //Send error if the passwords don't match on the password and confirm password strings
             if (!textEditPassword.getText().toString().equals(textEditConfirmPassword.getText().toString()))
             {
                 AlertDialog alertDialog = new AlertDialog.Builder(this).create();
@@ -121,6 +122,7 @@ public class RegisterActivity extends AppCompatActivity {
                 });
                 alertDialog.show();
             }
+            //If they match sign up user
             else
             {
                 //Save the data in the databases

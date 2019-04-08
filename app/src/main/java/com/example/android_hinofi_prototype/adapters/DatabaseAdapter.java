@@ -6,13 +6,15 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.example.android_hinofi_prototype.models.MusicArtist;
-import com.example.android_hinofi_prototype.models.User;
 import com.example.android_hinofi_prototype.sql.DatabaseHelper;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -174,8 +176,6 @@ public class DatabaseAdapter {
                 musicArtist.setMusicArtistID(cursor.getInt(cursor.getColumnIndex("MusicArtistID")));
                 musicArtist.setArtistName(cursor.getString(cursor.getColumnIndex("ArtistName")));
                 musicArtist.setGenre(cursor.getString(cursor.getColumnIndex("Genre")));
-                musicArtist.setImage(cursor.getString(cursor.getColumnIndex("Image")));
-
                 result.add(musicArtist);
             }
             while (cursor.moveToNext());
@@ -220,8 +220,6 @@ public class DatabaseAdapter {
                 musicArtist.setMusicArtistID(cursor.getInt(cursor.getColumnIndex("MusicArtistID")));
                 musicArtist.setArtistName(cursor.getString(cursor.getColumnIndex("ArtistName")));
                 musicArtist.setGenre(cursor.getString(cursor.getColumnIndex("Genre")));
-                musicArtist.setImage(cursor.getString(cursor.getColumnIndex("Image")));
-
                 result.add(musicArtist);
             }
             while (cursor.moveToNext());
@@ -229,5 +227,16 @@ public class DatabaseAdapter {
         return result;
     }
 
+   public static byte[] getBytesFromBitmap(Bitmap bitmap)
+   {
+       ByteArrayOutputStream stream = new ByteArrayOutputStream();
+       bitmap.compress(Bitmap.CompressFormat.PNG,0, stream);
+       return stream.toByteArray();
+   }
+
+   public static Bitmap getImageFromBytes(byte[] image)
+   {
+       return BitmapFactory.decodeByteArray(image,0,image.length);
+   }
 
 }
