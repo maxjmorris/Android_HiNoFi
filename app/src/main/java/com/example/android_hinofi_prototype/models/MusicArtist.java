@@ -1,11 +1,14 @@
 package com.example.android_hinofi_prototype.models;
 
+import java.sql.Blob;
+
 public class MusicArtist {
 
     public  int MusicArtistID;
-    public String ArtistName,Genre,Image;
+    public String ArtistName,Genre;
+    public Blob Image;
 
-    public MusicArtist(int musicArtistID, String artistName, String genre, String image) {
+    public MusicArtist(int musicArtistID, String artistName, String genre, Blob image) {
         MusicArtistID = musicArtistID;
         ArtistName = artistName;
         Genre = genre;
@@ -41,11 +44,11 @@ public class MusicArtist {
         Genre = genre;
     }
 
-    public String getImage() {
+    public Blob getImage() {
         return Image;
     }
 
-    public void setImage(String image) {
+    public void setImage(Blob image) {
         Image = image;
     }
 }

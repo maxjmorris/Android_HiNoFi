@@ -4,8 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -15,21 +13,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+
 import com.example.android_hinofi_prototype.R;
 import com.example.android_hinofi_prototype.adapters.DatabaseAdapter;
+import com.example.android_hinofi_prototype.models.User;
 
 
 /**
  * A login screen that offers login via email/password.
  */
 public class LoginActivity extends AppCompatActivity{
-    private EditText editTextUserEmail;
+    private EditText editTextUserName;
     private EditText editTextUserPassword;
     public String username;
     private String password;
     String storedPassword;
     Context context=this;
 
+    User user;
     DatabaseAdapter databaseAdapter;
 
     @Override
@@ -42,7 +43,7 @@ public class LoginActivity extends AppCompatActivity{
         //Creates an instance of the databases
         databaseAdapter = new DatabaseAdapter(getApplicationContext());
         databaseAdapter = databaseAdapter.createDatabase();
-        editTextUserEmail = findViewById(R.id.textEditEmail);
+        editTextUserName = findViewById(R.id.textEditUsernameLogin);
         editTextUserPassword = findViewById(R.id.textEditPassword);
     }
 
@@ -51,7 +52,7 @@ public class LoginActivity extends AppCompatActivity{
 
         try {
             databaseAdapter = databaseAdapter.open();
-            username = editTextUserEmail.getText().toString();
+            username = editTextUserName.getText().toString();
             password = editTextUserPassword.getText().toString();
 
             if (username.equals("") || password.equals(""))  {
@@ -71,9 +72,12 @@ public class LoginActivity extends AppCompatActivity{
                 storedPassword = databaseAdapter.getSingleUser(username);
             }
             if (password.equals(storedPassword)) {
+                //Goes to the home page
                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                intent.putExtra("Username",editTextUserName.getText().toString());
                 startActivity(intent);
                 //finish
+                finish();
             }
             else
             {
@@ -129,6 +133,7 @@ public class LoginActivity extends AppCompatActivity{
         //Close the databases
         databaseAdapter.close();
     }
+
 }
 
 

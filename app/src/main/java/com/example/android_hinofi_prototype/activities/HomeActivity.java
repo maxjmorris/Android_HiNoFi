@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android_hinofi_prototype.R;
@@ -19,6 +20,12 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         getSupportActionBar().setTitle("Home");
+
+        String username = getIntent().getStringExtra("Username");
+
+        TextView txtViewUsername = findViewById(R.id.txtViewUsernameHome);
+        txtViewUsername.setText(username);
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_home);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

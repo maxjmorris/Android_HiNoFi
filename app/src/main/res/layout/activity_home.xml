@@ -82,10 +82,10 @@
         app:menu="@menu/bottom_navigation_home"></android.support.design.widget.BottomNavigationView>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtViewUsernameHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Test"
         android:textColor="@android:color/black"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
